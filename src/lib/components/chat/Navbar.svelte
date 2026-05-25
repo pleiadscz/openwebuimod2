@@ -39,6 +39,7 @@
 	import ChatCheck from '../icons/ChatCheck.svelte';
 	import Knobs from '../icons/Knobs.svelte';
 	import { WEBUI_API_BASE_URL } from '$lib/constants';
+	import ProfileImage from '$lib/components/chat/Messages/ProfileImage.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -236,15 +237,10 @@
 							>
 								<div class=" self-center">
 									<span class="sr-only">{$i18n.t('User menu')}</span>
-										<img
-											src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-											class="size-6 object-cover rounded-full"
-											alt=""
-											draggable="false"
-											on:error={(e) => {
-												e.currentTarget.src = $user?.profile_image_url ?? '/favicon.png';
-											}}
-										/>
+											<ProfileImage
+												src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
+												className="size-6"
+											/>
 								</div>
 							</div>
 						</UserMenu>

@@ -3066,8 +3066,8 @@
 									isNearTop = messagesContainerElement.scrollTop <= 100;
 								}}
 							>
-								<div class=" h-full w-full flex flex-col">
-									<Messages
+									<div class=" h-full w-full flex flex-col mb-20 md:mb-0">
+										<Messages
 										bind:this={messagesRef}
 										chatId={$chatId}
 										bind:history
@@ -3093,20 +3093,21 @@
 								</div>
 							</div>
 
-							<div class=" pb-2 {dragged ? 'z-0' : 'z-10'}">
-										<MessageInput
-											bind:this={messageInput}
-											bind:prompt
-											generating={generating || processing !== ''}
+								<div class=" pb-2 {dragged ? 'z-0' : 'z-10'} md:relative fixed bottom-0 left-0 right-0 px-2 pb-4 bg-white dark:bg-gray-900 md:bg-transparent">
+											<MessageInput
+												id="chat-input"
+												bind:this={messageInput}
+												bind:prompt
+												generating={generating || processing !== ''}
 											placeholder={$i18n.t('Zapytaj o cokolwiek')}
 											stopResponse={() => {
 												stopResponse();
 											}}
-											onSubmit={() => {
-												submitHandler(prompt);
-												prompt = '';
-												files = [];
-											}}
+												onSubmit={() => {
+													if (prompt.trim() || files.length > 0) {
+														submitHandler(prompt);
+													}
+												}}
 											onChange={(val) => {
 												prompt = val.prompt;
 											}}

@@ -3,23 +3,25 @@
   import ArrowUp from '../icons/ArrowUp.svelte';
   import Square from '../icons/Square.svelte';
 
-  interface Props {
-    prompt: string;
-    onSubmit: () => void;
-    stopResponse?: () => void;
-    generating?: boolean;
-    placeholder?: string;
-    onChange?: (val: any) => void;
-  }
-
-  let {
-    prompt = $bindable(''),
-    onSubmit,
-    stopResponse,
-    generating = false,
-    placeholder = 'Zapytaj o cokolwiek',
-    onChange
-  }: Props = $props();
+	  interface Props {
+	    id?: string;
+	    prompt: string;
+	    onSubmit: () => void;
+	    stopResponse?: () => void;
+	    generating?: boolean;
+	    placeholder?: string;
+	    onChange?: (val: any) => void;
+	  }
+	
+	  let {
+	    id = 'chat-input',
+	    prompt = $bindable(''),
+	    onSubmit,
+	    stopResponse,
+	    generating = false,
+	    placeholder = 'Zapytaj o cokolwiek',
+	    onChange
+	  }: Props = $props();
 
   // Compatibility with existing codebase
   export const setText = (text: string) => {
@@ -60,6 +62,7 @@
     </button>
 
     <input
+      {id}
       type="text"
       bind:value={prompt}
       onkeydown={handleKeyDown}
