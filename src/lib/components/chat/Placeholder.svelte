@@ -205,19 +205,18 @@
 			{/if}
 
 				<div class="text-base font-normal @md:max-w-3xl w-full py-3 {atSelectedModel ? 'mt-2' : ''} md:relative fixed bottom-0 left-0 right-0 px-2 pb-4 bg-white dark:bg-gray-900 md:bg-transparent z-20">
-						<MessageInput
-							id="chat-input"
-							bind:this={messageInput}
-							bind:prompt
-							placeholder={$i18n.t('How can I help you today?')}
-							onSubmit={() => {
-								dispatch('submit', prompt);
-							}}
-						onChange={(val) => {
-							prompt = val.prompt;
-							onChange(val);
-						}}
-					/>
+				<MessageInput
+					bind:this={messageInput}
+					bind:prompt
+					bind:files
+					{history}
+					placeholder={$i18n.t('How can I help you today?')}
+					stopResponse={() => {}}
+					createMessagePair={() => {}}
+					on:submit={(e) => {
+						dispatch('submit', prompt);
+					}}
+				/>
 			</div>
 		</div>
 	</div>
