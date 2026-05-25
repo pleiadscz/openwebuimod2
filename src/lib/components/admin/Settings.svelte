@@ -125,12 +125,7 @@
 				'export'
 			]
 		},
-		{
-			id: 'evaluations',
-			title: 'Evaluations',
-			route: '/admin/settings/evaluations',
-			keywords: ['evaluations', 'feedback', 'rating', 'arena', 'leaderboard', 'preference']
-		},
+
 		{
 			id: 'integrations',
 			title: 'Integrations',
@@ -186,64 +181,11 @@
 			route: '/admin/settings/code-execution',
 			keywords: ['code execution', 'python', 'sandbox', 'compiler', 'jupyter', 'interpreter']
 		},
-		{
-			id: 'interface',
-			title: 'Interface',
-			route: '/admin/settings/interface',
-			keywords: [
-				'interface',
-				'ui',
-				'appearance',
-				'banners',
-				'tasks',
-				'prompt suggestions',
-				'title generation',
-				'tags'
-			]
-		},
-		{
-			id: 'audio',
-			title: 'Audio',
-			route: '/admin/settings/audio',
-			keywords: [
-				'audio',
-				'voice',
-				'speech',
-				'tts',
-				'stt',
-				'whisper',
-				'deepgram',
-				'azure',
-				'openai',
-				'elevenlabs'
-			]
-		},
-		{
-			id: 'images',
-			title: 'Images',
-			route: '/admin/settings/images',
-			keywords: [
-				'images',
-				'generation',
-				'dalle',
-				'stable diffusion',
-				'comfyui',
-				'automatic1111',
-				'gemini'
-			]
-		},
-		{
-			id: 'pipelines',
-			title: 'Pipelines',
-			route: '/admin/settings/pipelines',
-			keywords: ['pipelines', 'workflows', 'filters', 'valves', 'middleware']
-		},
-		{
-			id: 'db',
-			title: 'Database',
-			route: '/admin/settings/db',
-			keywords: ['database', 'export', 'import', 'backup', 'chats', 'users']
-		}
+
+
+
+
+
 	];
 
 	const setFilteredSettings = () => {

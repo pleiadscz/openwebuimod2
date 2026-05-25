@@ -108,15 +108,15 @@
 					</div>
 				{/if}
 
-				<div
-					class="flex-1 overflow-hidden max-w-full mt-0.5 py-0.5
-			{$showSidebar ? 'ml-1' : ''}
-			"
-				>
-					{#if showModelSelector}
-						<ModelSelector bind:selectedModels showSetDefault={!shareEnabled} />
-					{/if}
-				</div>
+					<div
+						class="flex-1 overflow-hidden max-w-full mt-0.5 py-0.5
+				{$showSidebar ? 'ml-1' : ''}
+				"
+					>
+						{#if showModelSelector}
+							<ModelSelector bind:selectedModels showSetDefault={!shareEnabled} />
+						{/if}
+					</div>
 
 				<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 					<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
@@ -218,21 +218,7 @@
 						</Menu>
 					{/if}
 
-					{#if $user?.role === 'admin' || ($user?.permissions.chat?.controls ?? true)}
-						<Tooltip content={$i18n.t('Controls')}>
-							<button
-								class=" flex cursor-pointer px-2 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
-								on:click={async () => {
-									await showControls.set(!$showControls);
-								}}
-								aria-label="Controls"
-							>
-								<div class=" m-auto self-center">
-									<Knobs className=" size-5" strokeWidth="1" />
-								</div>
-							</button>
-						</Tooltip>
-					{/if}
+
 
 					{#if $user !== undefined && $user !== null}
 						<UserMenu
@@ -250,12 +236,15 @@
 							>
 								<div class=" self-center">
 									<span class="sr-only">{$i18n.t('User menu')}</span>
-									<img
-										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class="size-6 object-cover rounded-full"
-										alt=""
-										draggable="false"
-									/>
+										<img
+											src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
+											class="size-6 object-cover rounded-full"
+											alt=""
+											draggable="false"
+											on:error={(e) => {
+												e.currentTarget.src = $user?.profile_image_url ?? '/favicon.png';
+											}}
+										/>
 								</div>
 							</div>
 						</UserMenu>

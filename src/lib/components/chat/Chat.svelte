@@ -3094,18 +3094,23 @@
 							</div>
 
 							<div class=" pb-2 {dragged ? 'z-0' : 'z-10'}">
-									<MessageInput
-										bind:this={messageInput}
-										bind:prompt
-										{generating}
-										{stopResponse}
-										onSubmit={() => {
-											submitPrompt(prompt, files);
-										}}
-										onChange={(val) => {
-											prompt = val.prompt;
-										}}
-									/>
+										<MessageInput
+											bind:this={messageInput}
+											bind:prompt
+											generating={generating || processing !== ''}
+											placeholder={$i18n.t('Zapytaj o cokolwiek')}
+											stopResponse={() => {
+												stopResponse();
+											}}
+											onSubmit={() => {
+												submitHandler(prompt);
+												prompt = '';
+												files = [];
+											}}
+											onChange={(val) => {
+												prompt = val.prompt;
+											}}
+										/>
 
 								<div
 									class="absolute bottom-1 text-xs text-gray-500 text-center line-clamp-1 right-0 left-0"
@@ -3141,13 +3146,13 @@
 											saveDraft(data);
 										}
 									}}
-									on:submit={async (e) => {
-										clearDraft();
-										if (e.detail || files.length > 0) {
-											await tick();
-											submitHandler(e.detail);
-										}
-									}}
+										onSubmit={async () => {
+											clearDraft();
+											if (prompt || files.length > 0) {
+												await tick();
+												submitHandler(prompt);
+											}
+										}}
 								/>
 							</div>
 						{/if}

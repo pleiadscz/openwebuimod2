@@ -209,32 +209,18 @@
 			{/if}
 
 			<div class="text-base font-normal @md:max-w-3xl w-full py-3 {atSelectedModel ? 'mt-2' : ''}">
-				<MessageInput
-					bind:this={messageInput}
-					{history}
-					{selectedModels}
-					bind:files
-					bind:prompt
-					bind:autoScroll
-					bind:selectedToolIds
-					bind:selectedFilterIds
-					bind:imageGenerationEnabled
-					bind:codeInterpreterEnabled
-					bind:webSearchEnabled
-					bind:atSelectedModel
-					bind:showCommands
-					bind:dragged
-					{pendingOAuthTools}
-					{toolServers}
-					{stopResponse}
-					{createMessagePair}
-					placeholder={$i18n.t('How can I help you today?')}
-					{onChange}
-					{onUpload}
-					on:submit={(e) => {
-						dispatch('submit', e.detail);
-					}}
-				/>
+					<MessageInput
+						bind:this={messageInput}
+						bind:prompt
+						placeholder={$i18n.t('How can I help you today?')}
+						onSubmit={() => {
+							dispatch('submit', prompt);
+						}}
+						onChange={(val) => {
+							prompt = val.prompt;
+							onChange(val);
+						}}
+					/>
 			</div>
 		</div>
 	</div>
