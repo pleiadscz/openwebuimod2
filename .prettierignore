@@ -312,3 +312,5 @@ cypress/screenshots
 
 
 /static/*
+# Swagger UI static files (minified, should not be reformatted)
+backend/open_webui/static/swagger-ui/
