@@ -75,7 +75,9 @@
 	$: models = selectedModels.map((id) => $_models.find((m) => m.id === id));
 </script>
 
-	<div class="m-auto w-full max-w-6xl px-2 @2xl:px-20 translate-y-6 py-24 text-center flex flex-col min-h-full">
+<div
+	class="m-auto w-full max-w-6xl px-2 @2xl:px-20 translate-y-6 py-24 text-center flex flex-col min-h-full"
+>
 	{#if $temporaryChatEnabled}
 		<Tooltip
 			content={$i18n.t("This chat won't appear in history and your messages will not be saved.")}
@@ -126,10 +128,10 @@
 											selectedModelIdx = modelIdx;
 										}}
 									>
-											<ProfileImage
-												src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${model?.id}&lang=${$i18n.language}`}
-												className="size-9 @sm:size-10"
-											/>
+										<ProfileImage
+											src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${model?.id}&lang=${$i18n.language}`}
+											className="size-9 @sm:size-10"
+										/>
 									</button>
 								</Tooltip>
 							{/each}
@@ -204,7 +206,11 @@
 				</div>
 			{/if}
 
-				<div class="text-base font-normal @md:max-w-3xl w-full py-3 {atSelectedModel ? 'mt-2' : ''} md:relative fixed bottom-0 left-0 right-0 px-2 pb-4 bg-white dark:bg-gray-900 md:bg-transparent z-20">
+			<div
+				class="text-base font-normal @md:max-w-3xl w-full py-3 {atSelectedModel
+					? 'mt-2'
+					: ''} md:relative fixed bottom-0 left-0 right-0 px-2 pb-4 bg-white dark:bg-gray-900 md:bg-transparent z-20"
+			>
 				<MessageInput
 					bind:this={messageInput}
 					bind:prompt
@@ -228,18 +234,21 @@
 		>
 			<FolderPlaceholder folder={$selectedFolder} />
 		</div>
-		{:else}
-			<div class="mx-auto max-w-2xl font-primary mt-2 mb-20 md:mb-0" in:fade={{ duration: 200, delay: 200 }}>
-				<div class="mx-5">
-					<Suggestions
-						suggestionPrompts={atSelectedModel?.info?.meta?.suggestion_prompts ??
-							models[selectedModelIdx]?.info?.meta?.suggestion_prompts ??
-							$config?.default_prompt_suggestions ??
-							[]}
-						inputValue={prompt}
-						{onSelect}
-					/>
-				</div>
+	{:else}
+		<div
+			class="mx-auto max-w-2xl font-primary mt-2 mb-20 md:mb-0"
+			in:fade={{ duration: 200, delay: 200 }}
+		>
+			<div class="mx-5">
+				<Suggestions
+					suggestionPrompts={atSelectedModel?.info?.meta?.suggestion_prompts ??
+						models[selectedModelIdx]?.info?.meta?.suggestion_prompts ??
+						$config?.default_prompt_suggestions ??
+						[]}
+					inputValue={prompt}
+					{onSelect}
+				/>
 			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
+</div>

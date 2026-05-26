@@ -14,9 +14,9 @@
 	import ModelItemMenu from './ModelItemMenu.svelte';
 	import EllipsisHorizontal from '$lib/components/icons/EllipsisHorizontal.svelte';
 	import { toast } from 'svelte-sonner';
-import Tag from '$lib/components/icons/Tag.svelte';
-		import Label from '$lib/components/icons/Label.svelte';
-		import ProfileImage from '$lib/components/chat/Messages/ProfileImage.svelte';
+	import Tag from '$lib/components/icons/Tag.svelte';
+	import Label from '$lib/components/icons/Label.svelte';
+	import ProfileImage from '$lib/components/chat/Messages/ProfileImage.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -77,14 +77,14 @@ import Tag from '$lib/components/icons/Tag.svelte';
 		{/if} -->
 
 		<div class="flex items-center gap-2">
-		<div class="flex items-center min-w-fit">
-					<Tooltip content={$user?.role === 'admin' ? (item?.value ?? '') : ''} placement="top-start">
-						<ProfileImage
-							src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${item.model.id}&lang=${$i18n.language}`}
-							className="size-5"
-						/>
-					</Tooltip>
-				</div>
+			<div class="flex items-center min-w-fit">
+				<Tooltip content={$user?.role === 'admin' ? (item?.value ?? '') : ''} placement="top-start">
+					<ProfileImage
+						src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${item.model.id}&lang=${$i18n.language}`}
+						className="size-5"
+					/>
+				</Tooltip>
+			</div>
 
 			<div class="flex items-center">
 				<Tooltip content={`${item.label} (${item.value})`} placement="top-start">

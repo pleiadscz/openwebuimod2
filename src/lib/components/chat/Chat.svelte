@@ -3066,8 +3066,8 @@
 									isNearTop = messagesContainerElement.scrollTop <= 100;
 								}}
 							>
-									<div class=" h-full w-full flex flex-col mb-20 md:mb-0">
-										<Messages
+								<div class=" h-full w-full flex flex-col mb-20 md:mb-0">
+									<Messages
 										bind:this={messagesRef}
 										chatId={$chatId}
 										bind:history
@@ -3093,26 +3093,30 @@
 								</div>
 							</div>
 
-								<div class=" pb-2 {dragged ? 'z-0' : 'z-10'} md:relative fixed bottom-0 left-0 right-0 px-2 pb-4 bg-white dark:bg-gray-900 md:bg-transparent">
-											<MessageInput
-												bind:this={messageInput}
-												bind:prompt
-												bind:files
-												{history}
-												{taskIds}
-												placeholder={$i18n.t('Zapytaj o cokolwiek')}
-												stopResponse={() => {
-													stopResponse();
-												}}
-												createMessagePair={(text) => {
-													// Handle message pair creation if needed
-												}}
-												on:submit={(e) => {
-													if (prompt.trim() || files.length > 0) {
-														submitHandler(prompt);
-													}
-												}}
-											/>
+							<div
+								class=" pb-2 {dragged
+									? 'z-0'
+									: 'z-10'} md:relative fixed bottom-0 left-0 right-0 px-2 pb-4 bg-white dark:bg-gray-900 md:bg-transparent"
+							>
+								<MessageInput
+									bind:this={messageInput}
+									bind:prompt
+									bind:files
+									{history}
+									{taskIds}
+									placeholder={$i18n.t('Zapytaj o cokolwiek')}
+									stopResponse={() => {
+										stopResponse();
+									}}
+									createMessagePair={(text) => {
+										// Handle message pair creation if needed
+									}}
+									on:submit={(e) => {
+										if (prompt.trim() || files.length > 0) {
+											submitHandler(prompt);
+										}
+									}}
+								/>
 
 								<div
 									class="absolute bottom-1 text-xs text-gray-500 text-center line-clamp-1 right-0 left-0"
@@ -3148,13 +3152,13 @@
 											saveDraft(data);
 										}
 									}}
-										onSubmit={async () => {
-											clearDraft();
-											if (prompt || files.length > 0) {
-												await tick();
-												submitHandler(prompt);
-											}
-										}}
+									onSubmit={async () => {
+										clearDraft();
+										if (prompt || files.length > 0) {
+											await tick();
+											submitHandler(prompt);
+										}
+									}}
 								/>
 							</div>
 						{/if}

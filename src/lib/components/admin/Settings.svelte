@@ -180,12 +180,7 @@
 			title: 'Code Execution',
 			route: '/admin/settings/code-execution',
 			keywords: ['code execution', 'python', 'sandbox', 'compiler', 'jupyter', 'interpreter']
-		},
-
-
-
-
-
+		}
 	];
 
 	const setFilteredSettings = () => {

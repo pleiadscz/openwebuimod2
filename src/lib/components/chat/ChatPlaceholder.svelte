@@ -56,10 +56,10 @@
 							)}
 							placement="right"
 						>
-								<ProfileImage
-									src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${model?.id}&lang=${$i18n.language}`}
-									className="size-[2.7rem]"
-								/>
+							<ProfileImage
+								src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${model?.id}&lang=${$i18n.language}`}
+								className="size-[2.7rem]"
+							/>
 						</Tooltip>
 					</button>
 				{/each}

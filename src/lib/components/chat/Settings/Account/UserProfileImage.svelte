@@ -88,14 +88,14 @@
 				profileImageInputElement.click();
 			}}
 		>
-				<img
-					src={profileImageUrl !== '' ? profileImageUrl : generateInitialsImage(user?.name)}
-					alt="profile"
-					class=" rounded-full {imageClassName} object-cover"
-					on:error={(e) => {
-						e.currentTarget.src = user?.profile_image_url ?? '/favicon.png';
-					}}
-				/>
+			<img
+				src={profileImageUrl !== '' ? profileImageUrl : generateInitialsImage(user?.name)}
+				alt="profile"
+				class=" rounded-full {imageClassName} object-cover"
+				on:error={(e) => {
+					e.currentTarget.src = user?.profile_image_url ?? '/favicon.png';
+				}}
+			/>
 
 			<div class="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition">
 				<div class="p-1 rounded-full bg-white text-black border-gray-100 shadow">

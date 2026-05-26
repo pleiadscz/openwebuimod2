@@ -128,14 +128,14 @@
 			{#if profile}
 				<div class=" flex gap-3.5 w-full p-2.5 items-center">
 					<div class=" items-center flex shrink-0">
-							<img
-								src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-								class=" size-10 object-cover rounded-full"
-								alt="profile"
-								on:error={(e) => {
-									e.currentTarget.src = $user?.profile_image_url ?? '/favicon.png';
-								}}
-							/>
+						<img
+							src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
+							class=" size-10 object-cover rounded-full"
+							alt="profile"
+							on:error={(e) => {
+								e.currentTarget.src = $user?.profile_image_url ?? '/favicon.png';
+							}}
+						/>
 					</div>
 
 					<div class=" flex flex-col w-full flex-1">
@@ -564,8 +564,6 @@
 				<hr class=" border-gray-50/30 dark:border-gray-800/30 my-1 p-0" />
 
 				<!-- {$i18n.t('Help')} -->
-
-
 
 				<button
 					class="flex rounded-xl py-1.5 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition cursor-pointer select-none"

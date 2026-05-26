@@ -483,32 +483,32 @@
 	let search = '';
 	let searchDebounceTimeout;
 
-		const getAvailableSettings = () => {
-			const removedTabs = ['interface', 'audio', 'data_controls'];
-			return allSettings.filter((tab) => {
-				if (removedTabs.includes(tab.id)) return false;
+	const getAvailableSettings = () => {
+		const removedTabs = ['interface', 'audio', 'data_controls'];
+		return allSettings.filter((tab) => {
+			if (removedTabs.includes(tab.id)) return false;
 
-				if (tab.id === 'connections') {
-					return $config?.features?.enable_direct_connections;
-				}
-	
-				if (tab.id === 'tools') {
-					return (
-						$user?.role === 'admin' ||
-						($user?.role === 'user' && $user?.permissions?.features?.direct_tool_servers)
-					);
-				}
-	
-				if (tab.id === 'personalization') {
-					return (
-						$config?.features?.enable_memories &&
-						($user?.role === 'admin' || ($user?.permissions?.features?.memories ?? true))
-					);
-				}
-	
-				return true;
-			});
-		};
+			if (tab.id === 'connections') {
+				return $config?.features?.enable_direct_connections;
+			}
+
+			if (tab.id === 'tools') {
+				return (
+					$user?.role === 'admin' ||
+					($user?.role === 'user' && $user?.permissions?.features?.direct_tool_servers)
+				);
+			}
+
+			if (tab.id === 'personalization') {
+				return (
+					$config?.features?.enable_memories &&
+					($user?.role === 'admin' || ($user?.permissions?.features?.memories ?? true))
+				);
+			}
+
+			return true;
+		});
+	};
 
 	const setFilteredSettings = () => {
 		filteredSettings = availableSettings
@@ -655,7 +655,6 @@
 								</div>
 								<div class=" self-center">{$i18n.t('General')}</div>
 							</button>
-
 						{:else if tabId === 'connections'}
 							{#if $user?.role === 'admin' || ($user?.role === 'user' && $config?.features?.enable_direct_connections)}
 								<button
@@ -732,8 +731,6 @@
 								</div>
 								<div class=" self-center">{$i18n.t('Personalization')}</div>
 							</button>
-
-
 						{:else if tabId === 'account'}
 							<button
 								role="tab"

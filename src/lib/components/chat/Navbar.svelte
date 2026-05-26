@@ -109,15 +109,15 @@
 					</div>
 				{/if}
 
-					<div
-						class="flex-1 overflow-hidden max-w-full mt-0.5 py-0.5
+				<div
+					class="flex-1 overflow-hidden max-w-full mt-0.5 py-0.5
 				{$showSidebar ? 'ml-1' : ''}
 				"
-					>
-						{#if showModelSelector}
-							<ModelSelector bind:selectedModels showSetDefault={!shareEnabled} />
-						{/if}
-					</div>
+				>
+					{#if showModelSelector}
+						<ModelSelector bind:selectedModels showSetDefault={!shareEnabled} />
+					{/if}
+				</div>
 
 				<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 					<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
@@ -219,8 +219,6 @@
 						</Menu>
 					{/if}
 
-
-
 					{#if $user !== undefined && $user !== null}
 						<UserMenu
 							className="w-[240px]"
@@ -237,10 +235,10 @@
 							>
 								<div class=" self-center">
 									<span class="sr-only">{$i18n.t('User menu')}</span>
-											<ProfileImage
-												src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-												className="size-6"
-											/>
+									<ProfileImage
+										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
+										className="size-6"
+									/>
 								</div>
 							</div>
 						</UserMenu>
